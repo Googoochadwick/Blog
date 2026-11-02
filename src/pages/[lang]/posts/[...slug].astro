@@ -1,5 +1,6 @@
 ---
 import CategoryNav from "@/components/CategoryNav.astro";
+import Giscus from "@/components/Giscus.astro";
 import Mermaid from "@/components/Mermaid.astro";
 import { languages, type LanguageKey } from "@/i18n/ui";
 import {
@@ -99,5 +100,6 @@ const translatePath = useTranslatedPath(lang);
         </aside>
       )}
     </div>
+    <Giscus />
   </main>
 </BaseLayout>

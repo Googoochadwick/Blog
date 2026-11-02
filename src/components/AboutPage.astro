@@ -4,6 +4,7 @@ import { type LanguageKey } from '@/i18n/ui';
 import { getLangFromUrl, useTranslatedPath } from '@/i18n/utils';
 import { withBase } from '@/utils/base';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Giscus from '@/components/Giscus.astro';
 
 const config = await getEntry('config', 'site');
 if (!config) throw new Error('Missing "site" entry in the config collection.');
@@ -96,5 +97,6 @@ const logo = (path: string) => withBase(path);
 				</article>
 			</section>
 		</div>
+		<Giscus />
 	</main>
 </BaseLayout>
