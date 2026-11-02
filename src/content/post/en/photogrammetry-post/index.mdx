@@ -1,0 +1,459 @@
+---
+isDraft: false
+subHeadline: "From a 3D scan of my own arm to a sliced, calibrated print: cleaning the mesh, fighting the printer, and what I learned."
+headline: "My Photogrammetry & 3D Printing Adventure"
+excerpt: "Documenting my journey from scanning a real hand with photogrammetry to 3D printing it, including the cleanup, slicing, and printer problems along the way."
+category: 
+    - 3D Printing
+    - Photogrammetry
+publishDate: 2026-05-19
+---
+
+![wow](SplitScreen.png)
+
+*Photogrammetry* and *3D printing* are an *art form*, an art of knowing the best methods to capture images for photogrammetry and knowing the right temperature, print speed and modeling decisions for the parts to be printed.
+
+Most of the "art" in 3D printing is attributed to the 3D printer itself, as different printer models require different levels of "involvement" during the printing process.
+
+Let me set the scene for what I have and what objectives I am fulfilling.
+
+# The Printer
+
+![Creality Ender V3 Pro](Printer.png)
+
+
+The printer at my disposal is a Creality Ender V3 Pro, it is cheap & reliable, just not consistent. We'll talk about it in a bit.
+
+I have access to this printer through the incubation center in my college.
+
+# The Filament
+![Green PLA filament](Filament.png)
+Most prints you will see below are done using PLA. It is biodegradable and is the most commonly used filament in 3D printing.
+
+
+# The project
+
+I have been assigned the task of 3D printing a hand, 3D scanned by me.
+The first step is obviously 3D scanning the hand.
+
+**The 3D scanned hand after processing**
+![The 3D scanned hand after processing](FinalHand.png)
+
+
+
+The method of 3D scanning I used to achieve the result is using **Photogrammetry**. It is the practice of creating 3D models by *capturing the pictures of the subject in an ordered, orbital fashion* i.e. capturing images by circling around the subject in small steps and taking multiple pictures of said subject.
+
+**Example from Wikipedia**
+![Photogrammetry example from Wikipedia](ExampleWiki.png)
+
+
+
+As we can see in the above image, the following was generated using photos taken by circling around the building. Similarly, we can generate 3D models for any subject.
+
+To process the images, you need dedicated software.
+
+# The Software
+**Meshroom**
+![Meshroom](Meshroom.png)
+
+One free application is **Meshroom**, it is free and open-source and can be used to process images for 3D model creation. It is however resource intensive and expects you to have a decently powerful PC.
+
+If you have an internet connection and some programming knowledge, you can definitely use this [*notebook*](#) to make these models, most of the models of my subjects are made using this Colab notebook.
+
+However, for this hand, I used a different application.
+
+**Polycam**
+![Polycam](Polycam.png)
+
+
+
+**Polycam** is available on the Apple App Store and is a suite of photogrammetry solutions, wrapped in a single app, that can be used to make 3D models and even Gaussian splats.
+
+It was an easy process, just orbit around the subject and capture pictures.
+
+or so it seemed...
+
+---
+
+# Model Cleaning
+**Raw models (left), Final model (right, highlighted)**
+![Raw models (left), final model (right, highlighted)](RawModels.png)
+
+We took 2 scans of the entire arm, one gave a good raw of the arm, the other gave a good raw of the hand.
+
+The scan was expected to be done with the intent to have both the hand and the arm in a single model.
+
+However, in one scan, the subject closed his hand due to fatigue, in the other one, the application only returned the hand.
+
+**Converting raw to final**
+![Converting raw to final](RawToFinal.png)
+
+
+
+The solution was to **remove the unwanted areas**, attach the hand onto the arm and then process the model by smoothening and fixing the details through sculpting in Blender.
+
+But first, the models needed their different parts connected together into a single closed polygon.
+
+## Meshlab
+**Meshlab**
+![Meshlab](MeshlabImport.png)
+
+
+We **import** the scanned models in **Meshlab** for processing. Our first intent is to **join the different edges into one**. What do I mean by joining the different edges? To answer that, first go here:
+
+**On the right pane**
+
+![On the right pane](MeshlabRightPane.png)
+
+
+
+And turn Boundary edges on:
+
+**Boundary Edges On**
+
+![Boundary Edges On](BoundaryEdgesToggle.png)
+
+
+
+You will see this:
+
+![Boundary edges](BoundaryEdges.png)
+
+We can see **lines** highlighted across the model. These lines are enclosed and are actually the boundary of different polygons *aligned* together to form the hand.
+
+The reason I say aligned is because their coordinates and rotations place them into the positions they are in to represent a hand, however if I sculpt on it in Blender, it will not work as intended, so we need to join them together.
+
+To do so:
+
+1. Select **Merge Close Vertices**
+
+![We will select Merge Close Vertices](MergeCloseVerticesMenu.png)
+
+
+2. Click **Apply**
+
+![Merge Close Vertices dialog](MergeCloseVerticesDialog.png)
+
+
+**Voila**
+
+![The merged result](MergedResult.png)
+
+
+
+As we can see, the moment we click apply, the model will show **no boundary edges**. This is the intended output.
+
+Now we will export it as .obj:
+
+![Export Mesh As](MeshlabFileMenu.png)
+
+![Choosing the .obj file type](MeshlabExportObj.png)
+
+The same was done by me on the other mesh.
+
+## Blender
+
+In Blender the .obj can be imported from the files as usual, no need to import the .mtl files, 3D printing does not require textures.
+
+**Importing .obj**
+![Importing .obj](BlenderImportObj.png)
+
+
+
+Now we intend on removing the red parts of our model.
+
+**Area to delete**
+![Area to delete](AreaToDelete.png)
+
+
+
+I do so by going into edit mode with wireframe mode on, selecting the areas and deleting them in both the models:
+
+**Deleting faces**
+![Deleting faces](DeletingFaces.png)
+
+
+
+Not going into too much detail as I don't have a save file for every step, but basically after I removed the unnecessary polygons I did the following:
+
+1. **Place both models at the desired location:**
+
+![Both models placed](PlaceModels.png)
+
+2. **Use shrinkwrap to connect both sections**
+
+Okay so basically, instead of retopology, I went for using the shrinkwrap modifier to make a *glove in a sense*, to wrap the entire hand and then use that as the main model.
+
+![Shrink wrap](ShrinkWrap.png)
+
+*Shrink wrap*
+
+Above is an example image, I have used a simple cube with a subdivision modifier applied first and then the shrinkwrap applied:
+
+![Subdivision and shrinkwrap modifiers](ShrinkWrapModifiers.png)
+
+In practice, I had made a model using a **subdivided cube** whose modifier was not applied and made a simplified model covering the entire hand and then shrinkwrapped it:
+
+![A cube being edited while the subdivision modifier is still active](SubdivisionCube.png)
+
+*A cube being edited while subdivision modifier is still active*
+
+3. **Sculpt details and clean the model**
+
+The rest of it was done using the sculpting tools in Blender to fix the model and get it ready for 3D printing.
+
+![Before (left) and after (right)](BeforeAfter.png)
+
+*Before (left), after (right)*
+
+4. **Export as .obj**
+
+![Exporting as .obj](BlenderExportObj.png)
+
+*Exporting as .obj*
+
+---
+
+# 3D Printing
+
+Now back to 3D printing. First we need to choose settings for the print and the placement of the model being printed on the print tray. For this there are 2 different software options you can use.
+
+1. **Ultimaker Cura**
+
+![Ultimaker Cura](UltimakerCura.png)
+
+*Ultimaker Cura*
+
+**Ultimaker Cura** is an open-source slicing software for 3D printing, I use this when I need to make simple prints, however for this project, I used another tool.
+
+2. **Bamboo Studio**
+
+![Bamboo Studio](BambooStudio.png)
+
+**Bamboo Studio** is another open-source tool for slicing and the one I used for this project. Let's address the challenges of the print.
+
+# Challenges
+
+1. **Print Size**
+
+![Printer size (left), print size (right)](PrinterSize.png)
+
+*Printer size (left), Print Size (right)*
+
+The main problem is that our hand model is 420 mm in the Z axis (height). We need to **cut** the model into 2 parts in order to print the complete model in the same space.
+
+2. **Print time and material used**
+
+We need to make sure that the material used is not more than what is needed and the print time is manageable.
+
+## Tackling the challenges
+
+First let's import the model.
+
+![Imported model](BambooStudio.png)
+
+*Imported model*
+
+As we can see, it is quite small. Fortunately, I know that the model is 420 mm in height, so I will change the model Z-axis height to 420 mm.
+
+![Z-axis height changed to 420mm](ScaleZ.png)
+
+*Z-axis height changed to 420mm*
+
+Make sure **uniform scale** is **toggled**.
+
+Now we face our first challenge, the **print exceeds the print size** due to its **height**.
+
+![Error message](HeightError.png)
+
+*Error message*
+
+To fix this we will use the **cut tool**.
+
+![Cut tool](CutTool.png)
+
+*Cut tool*
+
+Once it is at the desired location, we will go to **add connectors**.
+
+![Connectors](Connectors.png)
+
+Select **square connector**, as it reduces the chances of the connection rotating compared to a circular connection, while still being a strong connection with **minimal filament usage**.
+
+Change whatever parameters you need to, click on the location you want it at, and click confirm, then on the cut menu, click confirm.
+
+![Cut result](CutResult1.png)
+
+*Result*
+
+![Cut result, close-up of the connector](CutResult2.png)
+
+*Result*
+
+This is the result of the cut, now we place the models in the desired locations on the tray.
+
+![Laid within the print area](LaidOnPlate.png)
+
+*Laid within the print area*
+
+Now let's see what happens if we slice it as is with the default settings.
+
+![Slice plate](SlicePlateButton.png)
+
+![Slicing result with default settings](SliceDefault.png)
+
+Okay, that's a lot of print time and material being used. Let's fix this.
+
+First of all, this print is for **showcase** and poses **no functional purpose** other than **viewing**, so it needs to be strong enough to survive minor hits, but has no need to be extremely strong; for this, we will change the *infill amount*.
+
+## Infill
+
+![Sparse infill settings](InfillSettings.png)
+
+*Sparse Infill (bottom)*
+
+In the strength tab at the bottom we have **infill density**.
+
+![Grid infill](GridInfill.png)
+
+*Grid infill*
+
+**Infill** is used to **increase part strength** by filling the interior hull with an infill pattern, the *higher the infill percent, the stronger the material.* As it's for showcase, I will decrease it to 1%.
+
+![Reduced to 1%](InfillOnePercent.png)
+
+*Reduced to 1%*
+
+I will also make sure that the wall loop is at least 3. Now if I check the print time:
+
+![Print and material amount used](SliceReduced.png)
+
+*Print and material amount used*
+
+That is a substantial decrease, however, the incubation center is open from 9:30 AM to 5 PM, so I need to decrease it even more. Fortunately for us, I can select which part is printable:
+
+![Printable option in the right-click menu](PrintableMenu.png)
+
+*After right clicking with a part selected*
+
+![Part selected as not printable, hidden](PartHidden.png)
+
+*Part selected as not printable (hidden)*
+
+Now let's see the time for just printing the hand:
+
+![Slicing result for the hand only](SliceHandOnly.png)
+
+*Print time*
+
+It's 7 hrs, just within the time I am provided. The other one takes 12 hrs, but I can take permission to print that so no worries.
+
+Oh, also the other part needs **supports**, so you can easily turn those on here:
+
+![Supports](Supports.png)
+
+*Supports*
+
+We can now export it as a G-code file to our printer:
+
+![Export G-code file](ExportGcode.png)
+
+*Export button*
+
+---
+
+# Preparing the printer
+
+To prepare the printer we first need to **calibrate** it, i.e. dial in the print speed, temperature and other details.
+
+Most people use the calibration cube:
+
+![Calibration cube](CalibrationCube.png)
+
+*Calibration Cube*
+
+I like to use:
+
+![Print in Place Ragdollbot on Printables](Ragdollbot.png)
+
+*Ragdollbot*
+
+Because it takes just an hour and yeah... it's kinda cool.
+
+Now during the calibration test, I fortunately faced only 2 problems with simple fixes:
+
+1. **Filament got stuck in the nozzle**
+
+![Improper flow](ImproperFlow1.png)
+
+*Improper flow*
+
+![Improper flow](ImproperFlow2.png)
+
+*Improper flow*
+
+The **flow** of the filament became **inconsistent**, it was because the tray was too high and it resulted in the nozzle rubbing into the print and making the filament clog the nozzle partially or completely.
+
+The fix was easy:
+
+![Tray height adjuster](TrayHeight.png)
+
+*Tray height adjuster*
+
+I had to adjust the tray height, purge a small amount of the filament and continue.
+
+2. **Filament jamming**
+
+![Later layers didn't print](FilamentJamming.png)
+
+*Later layers didn't print*
+
+![Later layers didn't print, close-up](LaterLayers.png)
+
+*Later layers didn't print*
+
+This was because of the printer filament getting stuck in the spool:
+
+![Filament crossing](FilamentCrossing.png)
+
+*Filament crossing*
+
+To fix this I corrected the crossing over of the filament in the spool.
+
+This is a **temporary** fix. The filament pulling mechanism is strong enough to fix the spool itself, however the spool is placed at the center of the top bar:
+
+![Spool placement](SpoolPlacement.png)
+
+*Spool placement*
+
+This gives the pulling mechanism a sharp angle resulting in lowered pulling force and more friction on the filament itself:
+
+![Jamming filament](JammingFilament.png)
+
+*Jamming filament*
+
+A more **permanent** solution is given by this [Reddit user](#), but for it I will need some spare parts:
+
+![Reddit solution](RedditSolution.png)
+
+*Reddit*
+
+But for now, manual correction does the job.
+
+---
+
+# Output
+
+![Partial print of the hand (in focus) and ragdoll (out of focus)](PartialPrint.png)
+
+*Partial print of the hand (in focus) and ragdoll (out of focus)*
+
+Here is the partial print of the hand and the calibration ragdoll. The ragdoll has been printed *beautifully* and the interior of the hand has thick walls with a *good slot shape and infill wall.*
+
+The above output gives me confidence that the full hand will be printed flawlessly and I will proceed with the print.
+
+# What I learned
+
+I have improved my sculpting skills in Blender and also learnt how to use Bamboo Studio and Meshlab.
+
+I have also learnt how to do better captures for photogrammetry and best practices for 3D printing and model cleaning.

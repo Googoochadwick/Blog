@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "copyright": {
+                "type": "string"
+              },
+              "socials": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "url"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "copyright",
+              "socials"
+            ]
+          },
+          "navigation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "translationKey": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "hideOnMobile": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "translationKey",
+                "url"
+              ]
+            }
+          }
+        },
+        "required": [
+          "brand",
+          "navigation"
+        ]
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "copyright": {
+                "type": "string"
+              },
+              "socials": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "url"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "copyright",
+              "socials"
+            ]
+          },
+          "navigation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "translationKey": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "hideOnMobile": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "translationKey",
+                "url"
+              ]
+            }
+          }
+        },
+        "required": [
+          "brand",
+          "navigation"
+        ]
+      }
+    }
+  ]
+}

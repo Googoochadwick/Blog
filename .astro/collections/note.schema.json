@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "headline": {
+      "type": "string"
+    },
+    "publishDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "category": {
+      "default": "unsorted",
+      "type": "string"
+    },
+    "social": {
+      "type": "object",
+      "properties": {
+        "threads": {
+          "type": "string"
+        }
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "headline",
+    "publishDate"
+  ]
+}

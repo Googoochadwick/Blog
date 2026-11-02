@@ -1,0 +1,49 @@
+{
+  "site": {
+    "brand": {
+      "name": "Kalam",
+      "description": "A personal website for Arush Anand Singh, a Computer Science student at SRMIST who enjoys tinkering with technology and exploring new ideas.",
+      "copyright": "© 2026 Arush Anand Singh",
+      "socials": [
+        {
+          "name": "LinkedIn",
+          "url": "https://isht.ink/my-linkedin"
+        },
+        {
+          "name": "GitHub",
+          "url": "https://ishortn.ink/my-github"
+        },
+        {
+          "name": "Medium",
+          "url": "https://ishortn.ink/my-medium"
+        },
+        {
+          "name": "Twitter",
+          "url": "https://ishortn.ink/my-twitter"
+        },
+        {
+          "name": "Mastodon",
+          "url": "https://isht.ink/my-mastodom"
+        },
+        {
+          "name": "Email",
+          "url": "mailto:arushanand@gmail.com"
+        }
+      ]
+    },
+    "navigation": [
+      {
+        "translationKey": "nav.about",
+        "url": "/"
+      },
+      {
+        "translationKey": "nav.posts",
+        "url": "/posts"
+      },
+      {
+        "translationKey": "nav.notes",
+        "url": "/notes"
+      }
+    ]
+  }
+}

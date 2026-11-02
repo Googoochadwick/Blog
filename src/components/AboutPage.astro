@@ -1,0 +1,100 @@
+---
+import { getEntry } from 'astro:content';
+import { type LanguageKey } from '@/i18n/ui';
+import { getLangFromUrl, useTranslatedPath } from '@/i18n/utils';
+import { withBase } from '@/utils/base';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const config = await getEntry('config', 'site');
+if (!config) throw new Error('Missing "site" entry in the config collection.');
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+const { brand } = config.data;
+
+const skills = [
+	{ label: 'Programming languages', value: 'Python, C++' },
+	{ label: 'Web development', value: 'HTML, CSS, JS, React' },
+	{ label: 'Tools', value: 'Git, Docker, VScode, Colab' },
+	{ label: 'Domains', value: 'AI/ML, IoT, Cloud Computing' },
+];
+
+const otherSkills = [
+	{ title: '3D printing, modeling & photogrammetry', body: 'Scanning real objects, cleaning the mesh and printing them.', link: { text: 'Related article', url: 'https://medium.com/@sudo.desync/my-photogrammetry-3d-printing-adventure-34442291a13a' } },
+	{ title: 'Microsoft Azure cloud & AI tools', body: 'Certified in AZ-900 and AI-900.' },
+	{ title: 'Server management & hosting', body: 'Both through services like Vercel and self-hosted.' },
+	{ title: 'Web development & design', body: 'Frontend and backend, using Figma, Penpot and React.', link: { text: 'Related article', url: 'https://medium.com/@sudo.desync/modern-quick-dev-learning-and-building-the-hard-way-e4f51cd67746' } },
+	{ title: 'Arduino & Raspberry Pi', body: 'Hands-on knowledge of both, currently learning Webots.', link: { text: 'Reference link', url: 'https://www.tinkercad.com/things/gQ1lE5SKVUd-aqua-shield-system?sharecode=e2nQ2ZF5Rf4-j7yGBqFUM6pDBF-47cKATbe6E9wR3nY' } },
+];
+
+const certs = [
+	{ name: 'Harvard CS50P', image: '/harvard.png', alt: 'Harvard CS50 Certificate', body: 'An introduction to programming using Python, a popular language for general-purpose programming, data science, web programming, and more.', url: 'https://certificates.cs50.io/2d78657b-2231-415e-9a90-ba18d00b2d49.pdf?size=letter' },
+	{ name: 'Microsoft Azure Fundamentals (AZ-900)', image: '/microsoft.png', alt: 'Microsoft Azure Certificate', body: 'Demonstrates foundational knowledge of cloud concepts, core Azure services, plus Azure management and governance features and tools.', url: 'https://learn.microsoft.com/en-us/users/arushanandsingh-0374/credentials/dfc4be24c786d14f?ref=https%3A%2F%2Fwww.linkedin.com%2F' },
+	{ name: 'Microsoft Azure AI Fundamentals (AI-900)', image: '/microsoft.png', alt: 'Microsoft Azure AI Certificate', body: 'Fundamental concepts related to artificial intelligence, and the services in Microsoft Azure that can be used to create AI solutions.', url: 'https://learn.microsoft.com/en-us/users/arushanandsingh-0374/credentials/3e6491c874db4d1e?ref=https%3A%2F%2Fwww.linkedin.com%2F' },
+];
+
+const machines = [
+	{ name: 'Main machine', notes: 'My daily driver for development and related work like photogrammetry, 3D printing and CAD modeling.', specs: [['PC', 'Vostro 3420'], ['CPU', '12th Gen Intel Core i3-1215U (4+4) @ 4.40 GHz'], ['GPU', 'Intel UHD Graphics (integrated)'], ['OS', 'Omarchy 3.6.0'], ['Primary IDE', 'VScode'], ['Secondary IDE', 'Fresh'], ['VM', 'Windows 11 (again'], ['Terminal', 'alacritty 0.17.0'], ['Misc software', 'Bambu Studio, Blender, Docker']] },
+	{ name: 'Server', notes: 'Hosts the software I code with, serves files and blocks ads in my dorm room.', specs: [['PC', 'Aspire 5742Z V1.21'], ['CPU', 'Intel Pentium P6100 (2) @ 1.999 GHz'], ['GPU', 'Intel Core Processor'], ['OS', 'Ubuntu 24.04.3 LTS x86_64'], ['Terminal', 'TMUX'], ['Misc software', 'CodeServer, Dufs, Pi-Hole']] },
+];
+
+const copy: Record<LanguageKey, { kicker: string; title: string; description: string; intro: string }> = {
+	en: {
+		kicker: 'About Me / 01',
+		title: '👋 Hello There!',
+		description: 'Arush Anand Singh — Computer Science student at SRMIST, vice-president of Geekroom Club, and a tinkerer of software, hardware and servers.',
+		intro: 'I’m Arush Anand Singh, a Computer Science sophomore at SRM IST Delhi NCR, passionate about Python, C++, machine learning, and building things that work beyond the screen. I serve as Vice-President of Geekroom Club, Lead Electrical & Simulations Engineer at Nodus Racing, and Innovation Ambassador at SRM, with internship experience at Digipodium. When I’m not coding, you’ll probably find me managing servers, experimenting with 3D printing, or distro-hopping in search of the perfect OS.',
+	},
+};
+
+const content = copy[lang];
+const logo = (path: string) => withBase(path);
+---
+
+<BaseLayout title={`${brand.name} — ${content.kicker}`} description={content.description}>
+	<main class="px-4 pb-12 pt-6">
+		<div class="max-w-4xl">
+			<p class="label">{content.kicker}</p>
+			<h1 class="mt-4 max-w-3xl text-4xl leading-[0.98] tracking-[-0.045em] sm:text-5xl md:text-6xl">{content.title}</h1>
+			<p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">{content.intro}</p>
+			<p class="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+				<a class="label text-ink" href="https://www.linkedin.com/in/arush-anand-singh-062761346">LinkedIn ↗</a>
+				<a class="label text-ink" href="https://www.geekroom-srmist.co.in/team">Geekroom Club ↗</a>
+			</p>
+
+			<section class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2" aria-label="Skills and projects">
+				<article class="border-t border-line pt-4">
+					<p class="label">Technical skills</p><h2 class="mt-3 text-2xl">What I code with</h2>
+					<dl class="mt-4 space-y-2 leading-relaxed text-muted">{skills.map((s) => <div><dt class="label inline">{s.label}:</dt><dd class="inline"> {s.value}</dd></div>)}</dl>
+					<p class="mt-4"><a class="label text-ink" href="https://ishortn.ink/my-github">My code repositories ↗</a></p>
+				</article>
+				<article class="border-t border-line pt-4">
+					<p class="label">Projects</p><h2 class="mt-3 text-2xl">SystemStats</h2>
+					<p class="mt-4 max-w-prose leading-relaxed text-muted">My Harvard CS50P final project, made with Python. It’s a terminal application that displays live system resource usage and can also generate PDF reports of the same. More on the way!</p>
+					<p class="mt-4"><a class="label text-ink" href="https://github.com/Googoochadwick/SystemStats">GitHub repository ↗</a></p>
+				</article>
+				<article class="border-t border-line pt-4 md:col-span-2">
+					<p class="label">Other related skills</p><h2 class="mt-3 text-2xl">Beyond the code</h2>
+					<ul class="mt-4 grid gap-x-12 gap-y-5 md:grid-cols-2">{otherSkills.map((s) => <li><h3 class="text-lg">{s.title}</h3><p class="mt-1 leading-relaxed text-muted">{s.body}</p>{s.link && <a class="label text-ink" href={s.link.url}>{s.link.text} ↗</a>}</li>)}</ul>
+				</article>
+				<article class="border-t border-line pt-4 md:col-span-2">
+					<p class="label">Certifications</p><h2 class="mt-3 text-2xl">Pieces of paper that say I tried</h2>
+					<ul class="mt-4 grid gap-8 md:grid-cols-3">{certs.map((c) => <li><img src={logo(c.image)} alt={c.alt} class="h-24 w-auto" loading="lazy" /><h3 class="mt-3 text-lg">{c.name}</h3><p class="mt-1 leading-relaxed text-muted">{c.body}</p><a class="label mt-2 inline-block text-ink" href={c.url}>View certificate ↗</a></li>)}</ul>
+				</article>
+				<article class="border-t border-line pt-4 md:col-span-2">
+					<p class="label">Machines</p><h2 class="mt-3 text-2xl">What I run things on</h2>
+					<div class="mt-4 grid gap-10 md:grid-cols-2">{machines.map((m) => <div><h3 class="text-lg">{m.name}</h3><p class="mt-1 leading-relaxed text-muted">{m.notes}</p><dl class="mt-3 space-y-1 font-mono text-sm">{m.specs.map(([k, v]) => <div class="flex gap-3"><dt class="w-32 shrink-0 text-muted">{k}</dt><dd>{v}</dd></div>)}</dl></div>)}</div>
+				</article>
+				<article class="border-t border-line pt-4">
+					<p class="label">Find me on</p><h2 class="mt-3 text-2xl">Socials</h2>
+					<ul class="mt-4 space-y-1 leading-relaxed">{brand.socials.map((s) => <li><a class="text-ink" href={s.url}>{s.name} ↗</a></li>)}</ul>
+				</article>
+				<article class="border-t border-line pt-4">
+					<p class="label">Writing</p><h2 class="mt-3 text-2xl">A little bit of everything</h2>
+					<p class="mt-4 leading-relaxed text-muted">Notes on software, AI/ML experiments, Linux and self-hosting, hardware tinkering and design.</p>
+					<p class="mt-4"><a class="label text-ink" href={`${translatePath('/posts')}/`}>Read the posts <span aria-hidden="true">↗</span></a></p>
+				</article>
+			</section>
+		</div>
+	</main>
+</BaseLayout>
