@@ -34,7 +34,7 @@
     "navigation": [
       {
         "translationKey": "nav.about",
-        "url": "/"
+        "url": "/about"
       },
       {
         "translationKey": "nav.posts",

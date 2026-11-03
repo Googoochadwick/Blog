@@ -14,37 +14,46 @@ const translatePath = useTranslatedPath(lang);
 const { brand } = config.data;
 
 const skills = [
-	{ label: 'Programming languages', value: 'Python, C++' },
-	{ label: 'Web development', value: 'HTML, CSS, JS, React' },
-	{ label: 'Tools', value: 'Git, Docker, VScode, Colab' },
-	{ label: 'Domains', value: 'AI/ML, IoT, Cloud Computing' },
+	{ label: 'Programming & web', value: 'Python, C++, JavaScript, React' },
+	{ label: 'AI & ML', value: 'Model evaluation, data visualization, AI applications' },
+	{ label: 'Systems', value: 'Linux, Docker, Git, self-hosted services, Vercel' },
+	{ label: 'Hardware', value: 'Arduino, IoT, 3D printing, photogrammetry, simulations' },
 ];
 
-const otherSkills = [
-	{ title: '3D printing, modeling & photogrammetry', body: 'Scanning real objects, cleaning the mesh and printing them.', link: { text: 'Related article', url: 'https://medium.com/@sudo.desync/my-photogrammetry-3d-printing-adventure-34442291a13a' } },
-	{ title: 'Microsoft Azure cloud & AI tools', body: 'Certified in AZ-900 and AI-900.' },
-	{ title: 'Server management & hosting', body: 'Both through services like Vercel and self-hosted.' },
-	{ title: 'Web development & design', body: 'Frontend and backend, using Figma, Penpot and React.', link: { text: 'Related article', url: 'https://medium.com/@sudo.desync/modern-quick-dev-learning-and-building-the-hard-way-e4f51cd67746' } },
-	{ title: 'Arduino & Raspberry Pi', body: 'Hands-on knowledge of both, currently learning Webots.', link: { text: 'Reference link', url: 'https://www.tinkercad.com/things/gQ1lE5SKVUd-aqua-shield-system?sharecode=e2nQ2ZF5Rf4-j7yGBqFUM6pDBF-47cKATbe6E9wR3nY' } },
+const projects = [
+	{ name: 'SystemStats', body: 'A Python terminal monitor with resource tracking and PDF reports.', url: 'https://github.com/Googoochadwick/SystemStats' },
+	{ name: 'Blood Cell Anomaly Prediction', body: 'ML models and a Streamlit app for blood cell anomaly detection.' },
+	{ name: 'SynRoute', body: 'An AI model routing tool comparing accuracy, speed and cost.' },
 ];
 
-const certs = [
-	{ name: 'Harvard CS50P', image: '/harvard.png', alt: 'Harvard CS50 Certificate', body: 'An introduction to programming using Python, a popular language for general-purpose programming, data science, web programming, and more.', url: 'https://certificates.cs50.io/2d78657b-2231-415e-9a90-ba18d00b2d49.pdf?size=letter' },
-	{ name: 'Microsoft Azure Fundamentals (AZ-900)', image: '/microsoft.png', alt: 'Microsoft Azure Certificate', body: 'Demonstrates foundational knowledge of cloud concepts, core Azure services, plus Azure management and governance features and tools.', url: 'https://learn.microsoft.com/en-us/users/arushanandsingh-0374/credentials/dfc4be24c786d14f?ref=https%3A%2F%2Fwww.linkedin.com%2F' },
-	{ name: 'Microsoft Azure AI Fundamentals (AI-900)', image: '/microsoft.png', alt: 'Microsoft Azure AI Certificate', body: 'Fundamental concepts related to artificial intelligence, and the services in Microsoft Azure that can be used to create AI solutions.', url: 'https://learn.microsoft.com/en-us/users/arushanandsingh-0374/credentials/3e6491c874db4d1e?ref=https%3A%2F%2Fwww.linkedin.com%2F' },
+const experience = [
+	{ role: 'Machine Learning Intern', organization: 'Digipodium', date: 'June–July 2026', body: 'Built, evaluated and deployed blood cell anomaly prediction models.' },
 ];
 
-const machines = [
-	{ name: 'Main machine', notes: 'My daily driver for development and related work like photogrammetry, 3D printing and CAD modeling.', specs: [['PC', 'Vostro 3420'], ['CPU', '12th Gen Intel Core i3-1215U (4+4) @ 4.40 GHz'], ['GPU', 'Intel UHD Graphics (integrated)'], ['OS', 'Omarchy 3.6.0'], ['Primary IDE', 'VScode'], ['Secondary IDE', 'Fresh'], ['VM', 'Windows 11 (again'], ['Terminal', 'alacritty 0.17.0'], ['Misc software', 'Bambu Studio, Blender, Docker']] },
-	{ name: 'Server', notes: 'Hosts the software I code with, serves files and blocks ads in my dorm room.', specs: [['PC', 'Aspire 5742Z V1.21'], ['CPU', 'Intel Pentium P6100 (2) @ 1.999 GHz'], ['GPU', 'Intel Core Processor'], ['OS', 'Ubuntu 24.04.3 LTS x86_64'], ['Terminal', 'TMUX'], ['Misc software', 'CodeServer, Dufs, Pi-Hole']] },
+const leadership = [
+	'Vice-President — Geek Room Club, SRM IST',
+	'Lead Electrical & Simulations Engineer — Nodus Racing',
+	'Innovation Ambassador — SRM',
+	'Former leadership responsibilities — Academies Council, Delhi Public School',
+];
+
+const certifications = [
+	{ name: 'Microsoft Certified: Azure Fundamentals (AZ-900)', image: '/microsoft.png', alt: 'Microsoft Azure Fundamentals certificate' },
+	{ name: 'Microsoft Certified: Azure AI Fundamentals (AI-900)', image: '/microsoft.png', alt: 'Microsoft Azure AI Fundamentals certificate' },
+	{ name: 'Harvard CS50P', image: '/harvard.png', alt: 'Harvard CS50P certificate' },
+];
+const achievements = [
+	'Vividglyph 2.0 — Second Place',
+	'Algo2Arduino — First',
+	'Connect SRM Hackathon — Runner-up',
 ];
 
 const copy: Record<LanguageKey, { kicker: string; title: string; description: string; intro: string }> = {
 	en: {
 		kicker: 'About Me / 01',
-		title: '👋 Hello There!',
-		description: 'Arush Anand Singh — Computer Science student at SRMIST, vice-president of Geekroom Club, and a tinkerer of software, hardware and servers.',
-		intro: 'I’m Arush Anand Singh, a Computer Science sophomore at SRM IST Delhi NCR, passionate about Python, C++, machine learning, and building things that work beyond the screen. I serve as Vice-President of Geekroom Club, Lead Electrical & Simulations Engineer at Nodus Racing, and Innovation Ambassador at SRM, with internship experience at Digipodium. When I’m not coding, you’ll probably find me managing servers, experimenting with 3D printing, or distro-hopping in search of the perfect OS.',
+		title: 'Hello There!',
+		description: 'I’m Arush Anand Singh, a computer science student at SRM IST Ghaziabad who likes understanding systems and building across software, hardware and infrastructure.',
+		intro: 'I’m Arush Anand Singh, a Computer Science student at SRM IST Ghaziabad (2024–2028) who enjoys building across software, hardware and infrastructure. I work mainly with Python, C++, machine learning and Linux, turning ideas into practical projects while learning something new along the way.',
 	},
 };
 
@@ -56,42 +65,51 @@ const logo = (path: string) => withBase(path);
 	<main class="px-4 pb-12 pt-6">
 		<div class="max-w-4xl">
 			<p class="label">{content.kicker}</p>
-			<h1 class="mt-4 max-w-3xl text-4xl leading-[0.98] tracking-[-0.045em] sm:text-5xl md:text-6xl">{content.title}</h1>
-			<p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">{content.intro}</p>
-			<p class="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-				<a class="label text-ink" href="https://www.linkedin.com/in/arush-anand-singh-062761346">LinkedIn ↗</a>
-				<a class="label text-ink" href="https://www.geekroom-srmist.co.in/team">Geekroom Club ↗</a>
-			</p>
+			<h1 class="mt-4 flex max-w-3xl items-center gap-3 text-4xl leading-[0.98] tracking-[-0.045em] sm:text-5xl md:text-6xl">
+				<img src={logo('/white-polo.png')} alt="" class="h-14 w-14 rounded-full object-cover object-top sm:h-16 sm:w-16 md:h-20 md:w-20" />
+				<span>{content.title}</span>
+			</h1>
+			<div class="mt-8">
+				<p class="max-w-2xl text-lg leading-relaxed text-muted md:text-xl">{content.intro}</p>
+				<p class="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+					<a class="label text-ink" href="https://www.linkedin.com/in/arush-anand-singh-googoochadwick/">LinkedIn ↗</a>
+					<a class="label text-ink" href="https://www.geekroom-srmist.co.in/team">Geekroom Club ↗</a>
+					<a class="label text-ink" href="https://rx.cv/googoochadwick" target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+				</p>
+			</div>
 
 			<section class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2" aria-label="Skills and projects">
 				<article class="border-t border-line pt-4">
-					<p class="label">Technical skills</p><h2 class="mt-3 text-2xl">What I code with</h2>
-					<dl class="mt-4 space-y-2 leading-relaxed text-muted">{skills.map((s) => <div><dt class="label inline">{s.label}:</dt><dd class="inline"> {s.value}</dd></div>)}</dl>
+					<p class="label">💻 Technical skills</p><h2 class="mt-3 text-2xl">A few tools in my kit</h2>
+					<dl class="mt-4 space-y-3 text-base leading-relaxed text-muted">{skills.map((s) => <div><dt class="label mb-1 block text-xs text-muted">{s.label}</dt><dd>{s.value}</dd></div>)}</dl>
 					<p class="mt-4"><a class="label text-ink" href="https://ishortn.ink/my-github">My code repositories ↗</a></p>
 				</article>
 				<article class="border-t border-line pt-4">
-					<p class="label">Projects</p><h2 class="mt-3 text-2xl">SystemStats</h2>
-					<p class="mt-4 max-w-prose leading-relaxed text-muted">My Harvard CS50P final project, made with Python. It’s a terminal application that displays live system resource usage and can also generate PDF reports of the same. More on the way!</p>
-					<p class="mt-4"><a class="label text-ink" href="https://github.com/Googoochadwick/SystemStats">GitHub repository ↗</a></p>
-				</article>
-				<article class="border-t border-line pt-4 md:col-span-2">
-					<p class="label">Other related skills</p><h2 class="mt-3 text-2xl">Beyond the code</h2>
-					<ul class="mt-4 grid gap-x-12 gap-y-5 md:grid-cols-2">{otherSkills.map((s) => <li><h3 class="text-lg">{s.title}</h3><p class="mt-1 leading-relaxed text-muted">{s.body}</p>{s.link && <a class="label text-ink" href={s.link.url}>{s.link.text} ↗</a>}</li>)}</ul>
-				</article>
-				<article class="border-t border-line pt-4 md:col-span-2">
-					<p class="label">Certifications</p><h2 class="mt-3 text-2xl">Pieces of paper that say I tried</h2>
-					<ul class="mt-4 grid gap-8 md:grid-cols-3">{certs.map((c) => <li><img src={logo(c.image)} alt={c.alt} class="h-24 w-auto" loading="lazy" /><h3 class="mt-3 text-lg">{c.name}</h3><p class="mt-1 leading-relaxed text-muted">{c.body}</p><a class="label mt-2 inline-block text-ink" href={c.url}>View certificate ↗</a></li>)}</ul>
-				</article>
-				<article class="border-t border-line pt-4 md:col-span-2">
-					<p class="label">Machines</p><h2 class="mt-3 text-2xl">What I run things on</h2>
-					<div class="mt-4 grid gap-10 md:grid-cols-2">{machines.map((m) => <div><h3 class="text-lg">{m.name}</h3><p class="mt-1 leading-relaxed text-muted">{m.notes}</p><dl class="mt-3 space-y-1 font-mono text-sm">{m.specs.map(([k, v]) => <div class="flex gap-3"><dt class="w-32 shrink-0 text-muted">{k}</dt><dd>{v}</dd></div>)}</dl></div>)}</div>
+					<p class="label">🦾 Projects</p><h2 class="mt-3 text-2xl">Things I’ve been building</h2>
+					<ul class="mt-4 list-none space-y-4">{projects.map((project) => <li><h3 class="text-lg">{project.name}</h3><p class="mt-1 leading-relaxed text-muted">{project.body}</p>{project.url && <a class="label mt-1 inline-block text-ink" href={project.url}>GitHub repository ↗</a>}</li>)}</ul>
 				</article>
 				<article class="border-t border-line pt-4">
-					<p class="label">Find me on</p><h2 class="mt-3 text-2xl">Socials</h2>
-					<ul class="mt-4 space-y-1 leading-relaxed">{brand.socials.map((s) => <li><a class="text-ink" href={s.url}>{s.name} ↗</a></li>)}</ul>
+					<p class="label">👨‍💻 Experience</p><h2 class="mt-3 text-2xl">Learning by doing</h2>
+					<ul class="mt-4 list-none space-y-5">{experience.map((item) => <li><p class="label">{item.date}</p><h3 class="mt-1 text-lg">{item.role} · {item.organization}</h3><p class="mt-2 leading-relaxed text-muted">{item.body}</p></li>)}</ul>
 				</article>
 				<article class="border-t border-line pt-4">
-					<p class="label">Writing</p><h2 class="mt-3 text-2xl">A little bit of everything</h2>
+					<p class="label">👔 Leadership</p><h2 class="mt-3 text-2xl">Building with people</h2>
+					<ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed text-muted">{leadership.map((item) => <li>{item}</li>)}</ul>
+				</article>
+				<article class="border-t border-line pt-4 md:col-span-2">
+					<p class="label">📜 Certifications</p><h2 class="mt-3 text-2xl">Things I’ve studied</h2>
+					<ul class="mt-4 grid gap-6 sm:grid-cols-3">{certifications.map((certification) => <li><img src={logo(certification.image)} alt={certification.alt} class="h-24 w-auto object-contain" loading="lazy" /><p class="mt-3 leading-relaxed">{certification.name}</p></li>)}</ul>
+				</article>
+				<article class="border-t border-line pt-4 md:col-span-2">
+					<p class="label">🏆 Achievements</p><h2 class="mt-3 text-2xl">A few milestones</h2>
+					<ul class="mt-4 grid list-disc gap-x-12 gap-y-2 pl-5 leading-relaxed text-muted sm:grid-cols-2">{achievements.map((item) => <li>{item}</li>)}</ul>
+				</article>
+				<article class="border-t border-line pt-4">
+					<p class="label">🌐 Find me on</p><h2 class="mt-3 text-2xl">Socials</h2>
+					<ul class="mt-4 list-disc space-y-3 pl-5 leading-relaxed sm:space-y-1">{brand.socials.map((s) => <li><a class="text-ink" href={s.url}>{s.name} ↗</a></li>)}</ul>
+				</article>
+				<article class="border-t border-line pt-4">
+					<p class="label">✍️ Writing</p><h2 class="mt-3 text-2xl">A little bit of everything</h2>
 					<p class="mt-4 leading-relaxed text-muted">Notes on software, AI/ML experiments, Linux and self-hosting, hardware tinkering and design.</p>
 					<p class="mt-4"><a class="label text-ink" href={`${translatePath('/posts')}/`}>Read the posts <span aria-hidden="true">↗</span></a></p>
 				</article>

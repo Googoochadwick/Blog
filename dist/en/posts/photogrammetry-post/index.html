@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="generator" content="Astro v7.3.8"><title>My Photogrammetry &amp; 3D Printing Adventure · Kalam</title><meta name="description" content="Documenting my journey from scanning a real hand with photogrammetry to 3D printing it, including the cleanup, slicing, and printer problems along the way."><link rel="canonical" href="http://localhost:4321/en/posts/photogrammetry-post/"><!-- Theme Color --><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f6f2"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161615"><!-- Favicons & Sitemap --><link id="site-favicon" rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><!-- Language Alternates --><!-- OpenGraph --><meta property="og:site_name" content="Kalam"><meta property="og:title" content="My Photogrammetry &amp; 3D Printing Adventure · Kalam"><meta property="og:description" content="Documenting my journey from scanning a real hand with photogrammetry to 3D printing it, including the cleanup, slicing, and printer problems along the way."><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:4321/en/posts/photogrammetry-post/"><meta property="og:locale" content="en"><meta property="og:image" content="http://localhost:4321/og.jpg"><meta property="og:image:alt" content="Kalam"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="My Photogrammetry &amp; 3D Printing Adventure · Kalam"><meta name="twitter:description" content="Documenting my journey from scanning a real hand with photogrammetry to 3D printing it, including the cleanup, slicing, and printer problems along the way."><meta name="twitter:image" content="http://localhost:4321/og.jpg"><meta name="twitter:image:alt" content="Kalam"><script>
+			try {
+				const theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
+				document.documentElement.dataset.theme = theme;
+				document.documentElement.style.colorScheme = theme;
+			} catch {
+				document.documentElement.dataset.theme = "light";
+				document.documentElement.style.colorScheme = "light";
+			}
+		</script><style>.category-details[data-astro-cid-okpgx4fs]{flex-direction:column-reverse;gap:.25rem;display:flex}@media (width>=48rem){.category-details[data-astro-cid-okpgx4fs]>ul[data-astro-cid-okpgx4fs]{display:block}.category-details[data-astro-cid-okpgx4fs]::details-content{content-visibility:visible}}
+</style><link rel="stylesheet" href="/_astro/BaseLayout.DoyUloA_.css"></head><body><div data-test="sidebar" class="fixed left-0 top-0 z-10 flex h-(--navbar-height) w-full items-center justify-between gap-4 border-b border-line bg-paper px-4 md:h-full md:w-(--navbar-width) md:flex-col md:items-start md:justify-start md:border-b-0 md:px-4 md:py-5"><header id="top" data-test="navbar" class="flex min-w-0 items-center gap-4 md:w-full md:flex-col md:items-start"><a class="hidden items-baseline gap-1.5 text-2xl leading-none font-bold tracking-tight sm:inline-flex" href="/en/about">Kalam<span data-test="logo-cursor" class="inline-block h-[0.72em] w-[0.5em] shrink-0 animate-blink bg-accent" aria-hidden="true"></span></a><nav class="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs tracking-widest uppercase md:flex-col md:items-start md:gap-y-2"><a class="transition-colors hover:text-accent" href="/en/about">About</a><a class="transition-colors hover:text-accent tui-active text-accent" aria-current="page" aria-label="Posts" href="/en/posts">Posts</a><a class="transition-colors hover:text-accent" href="/en/notes">Notes</a></nav></header><div class="flex shrink-0 items-center gap-4 md:mt-auto md:block"><button data-test="theme-toggle" type="button" class="label cursor-pointer appearance-none border-0 bg-transparent p-0 text-muted hover:text-ink md:mt-5" aria-label="Toggle color theme" aria-pressed="false" data-light-label="[light]" data-dark-label="[dark]">[light]</button></div></div><div class="mt-(--navbar-height) flex flex-1 flex-col md:mt-0 md:ml-(--navbar-width)"><main class="px-4 pt-6 pb-12"><div class="md:flex md:gap-8"><div class="hidden md:block"><nav aria-label="Categories" class="mb-6 w-fit whitespace-nowrap md:mb-0" data-astro-cid-okpgx4fs><p class="label" data-astro-cid-okpgx4fs>Categories</p><div class="mt-3" data-astro-cid-okpgx4fs><ul class="list-none space-y-1" role="list"><li><a href="/en/posts/categories/3d-printing/">3D Printing</a></li><li><a href="/en/posts/categories/photogrammetry/">Photogrammetry</a></li></ul></div></nav></div><div class="md:min-w-0 md:flex-1"><article><header><p class="label flex flex-wrap items-center gap-x-1">2026-05-19 · <a href="/en/posts/categories/3d-printing/">3D Printing</a>, <a href="/en/posts/categories/photogrammetry/">Photogrammetry</a></p><h1 class="mt-2 text-3xl tracking-tight md:text-4xl">My Photogrammetry &amp; 3D Printing Adventure</h1><p class="mt-3 text-lg text-muted">Documenting my journey from scanning a real hand with photogrammetry to 3D printing it, including the cleanup, slicing, and printer problems along the way.</p></header><div class="prose mt-8"><p><img src="/_astro/SplitScreen.Bu1DGspO_Z10jDnk.webp" alt="wow" loading="lazy" decoding="async" width="1920" height="1080"></p>
+<p><em>Photogrammetry</em> and <em>3D printing</em> are an <em>art form</em>, an art of knowing the best methods to capture images for photogrammetry and knowing the right temperature, print speed and modeling decisions for the parts to be printed.</p>
+<p>Most of the “art” in 3D printing is attributed to the 3D printer itself, as different printer models require different levels of “involvement” during the printing process.</p>
+<p>Let me set the scene for what I have and what objectives I am fulfilling.</p>
+<h1 id="the-printer">The Printer</h1>
+<p><img src="/_astro/Printer.CSZ_Grq__Z1V9I6I.webp" alt="Creality Ender V3 Pro" loading="lazy" decoding="async" width="800" height="600"></p>
+<p>The printer at my disposal is a Creality Ender V3 Pro, it is cheap &amp; reliable, just not consistent. We’ll talk about it in a bit.</p>
+<p>I have access to this printer through the incubation center in my college.</p>
+<h1 id="the-filament">The Filament</h1>
+<p><img src="/_astro/Filament.BS8zxBUd_Z2fQydN.webp" alt="Green PLA filament" loading="lazy" decoding="async" width="900" height="675">
+Most prints you will see below are done using PLA. It is biodegradable and is the most commonly used filament in 3D printing.</p>
+<h1 id="the-project">The project</h1>
+<p>I have been assigned the task of 3D printing a hand, 3D scanned by me.
+The first step is obviously 3D scanning the hand.</p>
+<p><strong>The 3D scanned hand after processing</strong>
+<img src="/_astro/FinalHand.B_PYNTXg_dx5xD.webp" alt="The 3D scanned hand after processing" loading="lazy" decoding="async" width="1043" height="551"></p>
+<p>The method of 3D scanning I used to achieve the result is using <strong>Photogrammetry</strong>. It is the practice of creating 3D models by <em>capturing the pictures of the subject in an ordered, orbital fashion</em> i.e. capturing images by circling around the subject in small steps and taking multiple pictures of said subject.</p>
+<p><strong>Example from Wikipedia</strong>
+<img src="/_astro/ExampleWiki.BSYmY_nN_1KpPLY.webp" alt="Photogrammetry example from Wikipedia" loading="lazy" decoding="async" width="1043" height="587"></p>
+<p>As we can see in the above image, the following was generated using photos taken by circling around the building. Similarly, we can generate 3D models for any subject.</p>
+<p>To process the images, you need dedicated software.</p>
+<h1 id="the-software">The Software</h1>
+<p><strong>Meshroom</strong>
+<img src="/_astro/Meshroom.8xa5yWmj_24aHGl.webp" alt="Meshroom" loading="lazy" decoding="async" width="1043" height="599"></p>
+<p>One free application is <strong>Meshroom</strong>, it is free and open-source and can be used to process images for 3D model creation. It is however resource intensive and expects you to have a decently powerful PC.</p>
+<p>If you have an internet connection and some programming knowledge, you can definitely use this <a href="#"><em>notebook</em></a> to make these models, most of the models of my subjects are made using this Colab notebook.</p>
+<p>However, for this hand, I used a different application.</p>
+<p><strong>Polycam</strong>
+<img src="/_astro/Polycam.C03zY3Pw_Z2b8yT1.webp" alt="Polycam" loading="lazy" decoding="async" width="512" height="512"></p>
+<p><strong>Polycam</strong> is available on the Apple App Store and is a suite of photogrammetry solutions, wrapped in a single app, that can be used to make 3D models and even Gaussian splats.</p>
+<p>It was an easy process, just orbit around the subject and capture pictures.</p>
+<p>or so it seemed…</p>
+<hr/>
+<h1 id="model-cleaning">Model Cleaning</h1>
+<p><strong>Raw models (left), Final model (right, highlighted)</strong>
+<img src="/_astro/RawModels.CUsgpOV4_Z1m8WQz.webp" alt="Raw models (left), final model (right, highlighted)" loading="lazy" decoding="async" width="945" height="399"></p>
+<p>We took 2 scans of the entire arm, one gave a good raw of the arm, the other gave a good raw of the hand.</p>
+<p>The scan was expected to be done with the intent to have both the hand and the arm in a single model.</p>
+<p>However, in one scan, the subject closed his hand due to fatigue, in the other one, the application only returned the hand.</p>
+<p><strong>Converting raw to final</strong>
+<img src="/_astro/RawToFinal.dTT0I3ko_Z2as9dM.webp" alt="Converting raw to final" loading="lazy" decoding="async" width="945" height="399"></p>
+<p>The solution was to <strong>remove the unwanted areas</strong>, attach the hand onto the arm and then process the model by smoothening and fixing the details through sculpting in Blender.</p>
+<p>But first, the models needed their different parts connected together into a single closed polygon.</p>
+<h2 id="meshlab">Meshlab</h2>
+<p><strong>Meshlab</strong>
+<img src="/_astro/MeshlabImport.DwS_PlEN_Zecd8V.webp" alt="Meshlab" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p>We <strong>import</strong> the scanned models in <strong>Meshlab</strong> for processing. Our first intent is to <strong>join the different edges into one</strong>. What do I mean by joining the different edges? To answer that, first go here:</p>
+<p><strong>On the right pane</strong></p>
+<p><img src="/_astro/MeshlabRightPane.BOq1bj5__Z2gICGO.webp" alt="On the right pane" loading="lazy" decoding="async" width="117" height="60"></p>
+<p>And turn Boundary edges on:</p>
+<p><strong>Boundary Edges On</strong></p>
+<p><img src="/_astro/BoundaryEdgesToggle.C5gpBAPP_24a3Bt.webp" alt="Boundary Edges On" loading="lazy" decoding="async" width="256" height="70"></p>
+<p>You will see this:</p>
+<p><img src="/_astro/BoundaryEdges.BRkFpJev_PyTxY.webp" alt="Boundary edges" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p>We can see <strong>lines</strong> highlighted across the model. These lines are enclosed and are actually the boundary of different polygons <em>aligned</em> together to form the hand.</p>
+<p>The reason I say aligned is because their coordinates and rotations place them into the positions they are in to represent a hand, however if I sculpt on it in Blender, it will not work as intended, so we need to join them together.</p>
+<p>To do so:</p>
+<ol>
+<li>Select <strong>Merge Close Vertices</strong></li>
+</ol>
+<p><img src="/_astro/MergeCloseVerticesMenu.B6f95KYG_Rz0Lp.webp" alt="We will select Merge Close Vertices" loading="lazy" decoding="async" width="1043" height="556"></p>
+<ol start="2">
+<li>Click <strong>Apply</strong></li>
+</ol>
+<p><img src="/_astro/MergeCloseVerticesDialog.CRv3dG81_Z29KD1r.webp" alt="Merge Close Vertices dialog" loading="lazy" decoding="async" width="508" height="360"></p>
+<p><strong>Voila</strong></p>
+<p><img src="/_astro/MergedResult.BsnxYOE4_1mMP6M.webp" alt="The merged result" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p>As we can see, the moment we click apply, the model will show <strong>no boundary edges</strong>. This is the intended output.</p>
+<p>Now we will export it as .obj:</p>
+<p><img src="/_astro/MeshlabFileMenu.Ye80VOMn_1hTDOY.webp" alt="Export Mesh As" loading="lazy" decoding="async" width="312" height="366"></p>
+<p><img src="/_astro/MeshlabExportObj.D-UfK8eu_Z2YHln.webp" alt="Choosing the .obj file type" loading="lazy" decoding="async" width="642" height="187"></p>
+<p>The same was done by me on the other mesh.</p>
+<h2 id="blender">Blender</h2>
+<p>In Blender the .obj can be imported from the files as usual, no need to import the .mtl files, 3D printing does not require textures.</p>
+<p><strong>Importing .obj</strong>
+<img src="/_astro/BlenderImportObj.AkbgVn5n_1QQevP.webp" alt="Importing .obj" loading="lazy" decoding="async" width="817" height="597"></p>
+<p>Now we intend on removing the red parts of our model.</p>
+<p><strong>Area to delete</strong>
+<img src="/_astro/AreaToDelete.C9-boEuu_Z1zGciN.webp" alt="Area to delete" loading="lazy" decoding="async" width="592" height="616"></p>
+<p>I do so by going into edit mode with wireframe mode on, selecting the areas and deleting them in both the models:</p>
+<p><strong>Deleting faces</strong>
+<img src="/_astro/DeletingFaces.D0-RB-C9_Z1zLvML.webp" alt="Deleting faces" loading="lazy" decoding="async" width="894" height="610"></p>
+<p>Not going into too much detail as I don’t have a save file for every step, but basically after I removed the unnecessary polygons I did the following:</p>
+<ol>
+<li><strong>Place both models at the desired location:</strong></li>
+</ol>
+<p><img src="/_astro/PlaceModels.BAObas7s_1Md1up.webp" alt="Both models placed" loading="lazy" decoding="async" width="1043" height="726"></p>
+<ol start="2">
+<li><strong>Use shrinkwrap to connect both sections</strong></li>
+</ol>
+<p>Okay so basically, instead of retopology, I went for using the shrinkwrap modifier to make a <em>glove in a sense</em>, to wrap the entire hand and then use that as the main model.</p>
+<p><img src="/_astro/ShrinkWrap.DCwClNC5_Z1qUUUM.webp" alt="Shrink wrap" loading="lazy" decoding="async" width="639" height="724"></p>
+<p><em>Shrink wrap</em></p>
+<p>Above is an example image, I have used a simple cube with a subdivision modifier applied first and then the shrinkwrap applied:</p>
+<p><img src="/_astro/ShrinkWrapModifiers.Bh_ZTxt7_ZiyhK5.webp" alt="Subdivision and shrinkwrap modifiers" loading="lazy" decoding="async" width="267" height="483"></p>
+<p>In practice, I had made a model using a <strong>subdivided cube</strong> whose modifier was not applied and made a simplified model covering the entire hand and then shrinkwrapped it:</p>
+<p><img src="/_astro/SubdivisionCube.Czz1WmJf_FmwJ5.webp" alt="A cube being edited while the subdivision modifier is still active" loading="lazy" decoding="async" width="996" height="778"></p>
+<p><em>A cube being edited while subdivision modifier is still active</em></p>
+<ol start="3">
+<li><strong>Sculpt details and clean the model</strong></li>
+</ol>
+<p>The rest of it was done using the sculpting tools in Blender to fix the model and get it ready for 3D printing.</p>
+<p><img src="/_astro/BeforeAfter.IKEDCrm9_yMGlr.webp" alt="Before (left) and after (right)" loading="lazy" decoding="async" width="1043" height="552"></p>
+<p><em>Before (left), after (right)</em></p>
+<ol start="4">
+<li><strong>Export as .obj</strong></li>
+</ol>
+<p><img src="/_astro/BlenderExportObj.C9rshM8Y_1lAiKp.webp" alt="Exporting as .obj" loading="lazy" decoding="async" width="888" height="790"></p>
+<p><em>Exporting as .obj</em></p>
+<hr/>
+<h1 id="3d-printing">3D Printing</h1>
+<p>Now back to 3D printing. First we need to choose settings for the print and the placement of the model being printed on the print tray. For this there are 2 different software options you can use.</p>
+<ol>
+<li><strong>Ultimaker Cura</strong></li>
+</ol>
+<p><img src="/_astro/UltimakerCura.BZxSwnoO_1bUO2S.webp" alt="Ultimaker Cura" loading="lazy" decoding="async" width="1043" height="587"></p>
+<p><em>Ultimaker Cura</em></p>
+<p><strong>Ultimaker Cura</strong> is an open-source slicing software for 3D printing, I use this when I need to make simple prints, however for this project, I used another tool.</p>
+<ol start="2">
+<li><strong>Bamboo Studio</strong></li>
+</ol>
+<p><img src="/_astro/BambooStudio.CzZTyOCD_ZMC3Hz.webp" alt="Bamboo Studio" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p><strong>Bamboo Studio</strong> is another open-source tool for slicing and the one I used for this project. Let’s address the challenges of the print.</p>
+<h1 id="challenges">Challenges</h1>
+<ol>
+<li><strong>Print Size</strong></li>
+</ol>
+<p><img src="/_astro/PrinterSize.BRLBgJAD_ioDYT.webp" alt="Printer size (left), print size (right)" loading="lazy" decoding="async" width="1000" height="612"></p>
+<p><em>Printer size (left), Print Size (right)</em></p>
+<p>The main problem is that our hand model is 420 mm in the Z axis (height). We need to <strong>cut</strong> the model into 2 parts in order to print the complete model in the same space.</p>
+<ol start="2">
+<li><strong>Print time and material used</strong></li>
+</ol>
+<p>We need to make sure that the material used is not more than what is needed and the print time is manageable.</p>
+<h2 id="tackling-the-challenges">Tackling the challenges</h2>
+<p>First let’s import the model.</p>
+<p><img src="/_astro/BambooStudio.CzZTyOCD_ZMC3Hz.webp" alt="Imported model" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p><em>Imported model</em></p>
+<p>As we can see, it is quite small. Fortunately, I know that the model is 420 mm in height, so I will change the model Z-axis height to 420 mm.</p>
+<p><img src="/_astro/ScaleZ.C0cmW0QZ_2gAmAO.webp" alt="Z-axis height changed to 420mm" loading="lazy" decoding="async" width="523" height="244"></p>
+<p><em>Z-axis height changed to 420mm</em></p>
+<p>Make sure <strong>uniform scale</strong> is <strong>toggled</strong>.</p>
+<p>Now we face our first challenge, the <strong>print exceeds the print size</strong> due to its <strong>height</strong>.</p>
+<p><img src="/_astro/HeightError.D2A4XT2u_ZAK55w.webp" alt="Error message" loading="lazy" decoding="async" width="1032" height="769"></p>
+<p><em>Error message</em></p>
+<p>To fix this we will use the <strong>cut tool</strong>.</p>
+<p><img src="/_astro/CutTool.CXegaF6s_Z1adRcf.webp" alt="Cut tool" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p><em>Cut tool</em></p>
+<p>Once it is at the desired location, we will go to <strong>add connectors</strong>.</p>
+<p><img src="/_astro/Connectors.EsRHo-3p_ZmAYYC.webp" alt="Connectors" loading="lazy" decoding="async" width="489" height="307"></p>
+<p>Select <strong>square connector</strong>, as it reduces the chances of the connection rotating compared to a circular connection, while still being a strong connection with <strong>minimal filament usage</strong>.</p>
+<p>Change whatever parameters you need to, click on the location you want it at, and click confirm, then on the cut menu, click confirm.</p>
+<p><img src="/_astro/CutResult1.YvXJzMl1_1txT95.webp" alt="Cut result" loading="lazy" decoding="async" width="756" height="607"></p>
+<p><em>Result</em></p>
+<p><img src="/_astro/CutResult2.8l1Y0DkT_2g6Xnn.webp" alt="Cut result, close-up of the connector" loading="lazy" decoding="async" width="636" height="582"></p>
+<p><em>Result</em></p>
+<p>This is the result of the cut, now we place the models in the desired locations on the tray.</p>
+<p><img src="/_astro/LaidOnPlate.CXpsmi3k_1TkgSQ.webp" alt="Laid within the print area" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p><em>Laid within the print area</em></p>
+<p>Now let’s see what happens if we slice it as is with the default settings.</p>
+<p><img src="/_astro/SlicePlateButton.Doq5N83k_Z1wmfMI.webp" alt="Slice plate" loading="lazy" decoding="async" width="154" height="64"></p>
+<p><img src="/_astro/SliceDefault.C0K5kUs9_Za8grK.webp" alt="Slicing result with default settings" loading="lazy" decoding="async" width="513" height="411"></p>
+<p>Okay, that’s a lot of print time and material being used. Let’s fix this.</p>
+<p>First of all, this print is for <strong>showcase</strong> and poses <strong>no functional purpose</strong> other than <strong>viewing</strong>, so it needs to be strong enough to survive minor hits, but has no need to be extremely strong; for this, we will change the <em>infill amount</em>.</p>
+<h2 id="infill">Infill</h2>
+<p><img src="/_astro/InfillSettings.8ARaN5Zj_Z1Tncn9.webp" alt="Sparse infill settings" loading="lazy" decoding="async" width="495" height="720"></p>
+<p><em>Sparse Infill (bottom)</em></p>
+<p>In the strength tab at the bottom we have <strong>infill density</strong>.</p>
+<p><img src="/_astro/GridInfill.BxWFWu4m_ZNLDck.webp" alt="Grid infill" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p><em>Grid infill</em></p>
+<p><strong>Infill</strong> is used to <strong>increase part strength</strong> by filling the interior hull with an infill pattern, the <em>higher the infill percent, the stronger the material.</em> As it’s for showcase, I will decrease it to 1%.</p>
+<p><img src="/_astro/InfillOnePercent.B1hp4pK7_ZAuQlS.webp" alt="Reduced to 1%" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p><em>Reduced to 1%</em></p>
+<p>I will also make sure that the wall loop is at least 3. Now if I check the print time:</p>
+<p><img src="/_astro/SliceReduced.TSRSvSDP_1Y6Cxq.webp" alt="Print and material amount used" loading="lazy" decoding="async" width="519" height="417"></p>
+<p><em>Print and material amount used</em></p>
+<p>That is a substantial decrease, however, the incubation center is open from 9:30 AM to 5 PM, so I need to decrease it even more. Fortunately for us, I can select which part is printable:</p>
+<p><img src="/_astro/PrintableMenu.9xK59V1l_ZTmh7z.webp" alt="Printable option in the right-click menu" loading="lazy" decoding="async" width="313" height="768"></p>
+<p><em>After right clicking with a part selected</em></p>
+<p><img src="/_astro/PartHidden.DbTgWH3__Z2dD8A8.webp" alt="Part selected as not printable, hidden" loading="lazy" decoding="async" width="1043" height="556"></p>
+<p><em>Part selected as not printable (hidden)</em></p>
+<p>Now let’s see the time for just printing the hand:</p>
+<p><img src="/_astro/SliceHandOnly.S9Wf5Sw__25z4GB.webp" alt="Slicing result for the hand only" loading="lazy" decoding="async" width="508" height="412"></p>
+<p><em>Print time</em></p>
+<p>It’s 7 hrs, just within the time I am provided. The other one takes 12 hrs, but I can take permission to print that so no worries.</p>
+<p>Oh, also the other part needs <strong>supports</strong>, so you can easily turn those on here:</p>
+<p><img src="/_astro/Supports.C0MAqtTl_11U2XS.webp" alt="Supports" loading="lazy" decoding="async" width="469" height="318"></p>
+<p><em>Supports</em></p>
+<p>We can now export it as a G-code file to our printer:</p>
+<p><img src="/_astro/ExportGcode.BztRcDTs_1yI5W9.webp" alt="Export G-code file" loading="lazy" decoding="async" width="196" height="40"></p>
+<p><em>Export button</em></p>
+<hr/>
+<h1 id="preparing-the-printer">Preparing the printer</h1>
+<p>To prepare the printer we first need to <strong>calibrate</strong> it, i.e. dial in the print speed, temperature and other details.</p>
+<p>Most people use the calibration cube:</p>
+<p><img src="/_astro/CalibrationCube.CGMZ36mV_1ukHlq.webp" alt="Calibration cube" loading="lazy" decoding="async" width="960" height="540"></p>
+<p><em>Calibration Cube</em></p>
+<p>I like to use:</p>
+<p><img src="/_astro/Ragdollbot.DxcLAdVo_2htACs.webp" alt="Print in Place Ragdollbot on Printables" loading="lazy" decoding="async" width="1043" height="587"></p>
+<p><em>Ragdollbot</em></p>
+<p>Because it takes just an hour and yeah… it’s kinda cool.</p>
+<p>Now during the calibration test, I fortunately faced only 2 problems with simple fixes:</p>
+<ol>
+<li><strong>Filament got stuck in the nozzle</strong></li>
+</ol>
+<p><img src="/_astro/ImproperFlow1.C0haV_A8_Z1nM7gV.webp" alt="Improper flow" loading="lazy" decoding="async" width="1043" height="583"></p>
+<p><em>Improper flow</em></p>
+<p><img src="/_astro/ImproperFlow2.LY2HmRhI_Z1P0jvm.webp" alt="Improper flow" loading="lazy" decoding="async" width="1043" height="685"></p>
+<p><em>Improper flow</em></p>
+<p>The <strong>flow</strong> of the filament became <strong>inconsistent</strong>, it was because the tray was too high and it resulted in the nozzle rubbing into the print and making the filament clog the nozzle partially or completely.</p>
+<p>The fix was easy:</p>
+<p><img src="/_astro/TrayHeight.hnrIo6b0_Xaaof.webp" alt="Tray height adjuster" loading="lazy" decoding="async" width="562" height="304"></p>
+<p><em>Tray height adjuster</em></p>
+<p>I had to adjust the tray height, purge a small amount of the filament and continue.</p>
+<ol start="2">
+<li><strong>Filament jamming</strong></li>
+</ol>
+<p><img src="/_astro/FilamentJamming.BjmoG9re_LCtgB.webp" alt="Later layers didn’t print" loading="lazy" decoding="async" width="1017" height="591"></p>
+<p><em>Later layers didn’t print</em></p>
+<p><img src="/_astro/LaterLayers.Dpctkkrf_B1Usi.webp" alt="Later layers didn’t print, close-up" loading="lazy" decoding="async" width="744" height="595"></p>
+<p><em>Later layers didn’t print</em></p>
+<p>This was because of the printer filament getting stuck in the spool:</p>
+<p><img src="/_astro/FilamentCrossing._48uOeE__oT0wQ.webp" alt="Filament crossing" loading="lazy" decoding="async" width="348" height="628"></p>
+<p><em>Filament crossing</em></p>
+<p>To fix this I corrected the crossing over of the filament in the spool.</p>
+<p>This is a <strong>temporary</strong> fix. The filament pulling mechanism is strong enough to fix the spool itself, however the spool is placed at the center of the top bar:</p>
+<p><img src="/_astro/SpoolPlacement.ClUPmJxt_M9mmX.webp" alt="Spool placement" loading="lazy" decoding="async" width="966" height="634"></p>
+<p><em>Spool placement</em></p>
+<p>This gives the pulling mechanism a sharp angle resulting in lowered pulling force and more friction on the filament itself:</p>
+<p><img src="/_astro/JammingFilament.BvuEgMYb_Z1JKYFq.webp" alt="Jamming filament" loading="lazy" decoding="async" width="367" height="312"></p>
+<p><em>Jamming filament</em></p>
+<p>A more <strong>permanent</strong> solution is given by this <a href="#">Reddit user</a>, but for it I will need some spare parts:</p>
+<p><img src="/_astro/RedditSolution.DoSxQHtS_2sfPwu.webp" alt="Reddit solution" loading="lazy" decoding="async" width="414" height="477"></p>
+<p><em>Reddit</em></p>
+<p>But for now, manual correction does the job.</p>
+<hr/>
+<h1 id="output">Output</h1>
+<p><img src="/_astro/PartialPrint.BrHj-aXN_1YEI6E.webp" alt="Partial print of the hand (in focus) and ragdoll (out of focus)" loading="lazy" decoding="async" width="1043" height="619"></p>
+<p><em>Partial print of the hand (in focus) and ragdoll (out of focus)</em></p>
+<p>Here is the partial print of the hand and the calibration ragdoll. The ragdoll has been printed <em>beautifully</em> and the interior of the hand has thick walls with a <em>good slot shape and infill wall.</em></p>
+<p>The above output gives me confidence that the full hand will be printed flawlessly and I will proceed with the print.</p>
+<h1 id="what-i-learned">What I learned</h1>
+<p>I have improved my sculpting skills in Blender and also learnt how to use Bamboo Studio and Meshlab.</p>
+<p>I have also learnt how to do better captures for photogrammetry and best practices for 3D printing and model cleaning.</p></div></article></div><aside class="hidden w-48 shrink-0 xl:block"><nav class="sticky top-8 max-h-[calc(100vh-4rem)] overflow-y-auto" aria-label="On this page"><p class="label mb-3">On this page</p><ul class="space-y-3 pl-3 text-sm"><li><a class="font-medium hover:text-ink" href="#the-printer">The Printer</a></li><li><a class="font-medium hover:text-ink" href="#the-filament">The Filament</a></li><li><a class="font-medium hover:text-ink" href="#the-project">The project</a></li><li><a class="font-medium hover:text-ink" href="#the-software">The Software</a></li><li><a class="font-medium hover:text-ink" href="#model-cleaning">Model Cleaning</a><ul class="mt-2 space-y-2 pl-3 text-muted"><li class><a class="hover:text-ink" href="#meshlab">Meshlab</a></li><li class><a class="hover:text-ink" href="#blender">Blender</a></li></ul></li><li><a class="font-medium hover:text-ink" href="#3d-printing">3D Printing</a></li><li><a class="font-medium hover:text-ink" href="#challenges">Challenges</a><ul class="mt-2 space-y-2 pl-3 text-muted"><li class><a class="hover:text-ink" href="#tackling-the-challenges">Tackling the challenges</a></li><li class><a class="hover:text-ink" href="#infill">Infill</a></li></ul></li><li><a class="font-medium hover:text-ink" href="#preparing-the-printer">Preparing the printer</a></li><li><a class="font-medium hover:text-ink" href="#output">Output</a></li><li><a class="font-medium hover:text-ink" href="#what-i-learned">What I learned</a></li></ul></nav></aside></div><section class="mx-auto w-full max-w-3xl px-4 pb-8"><div class="giscus"></div><script>
+		try {
+			const themeScript = document.currentScript?.nextElementSibling;
+			const theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+			themeScript?.setAttribute('data-theme', theme);
+		} catch {
+			// Keep the component's light-theme default when storage is unavailable.
+		}
+	</script><script src="https://giscus.app/client.js" data-repo="Googoochadwick/Blog" data-repo-id="R_kgDOVgiF-Q" data-category="Announcements" data-category-id="DIC_kwDOVgiF-c4DKPat" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async></script></section></main><footer data-test="footer" class="px-4 pb-5 mt-auto"><p class="mt-3 flex flex-wrap gap-x-2 font-mono text-xs tracking-widest uppercase text-muted"><span>© 2026 Arush Anand Singh</span><span>·</span><span>connect:</span><a class="text-ink transition-colors hover:text-accent" href="https://isht.ink/my-linkedin">LinkedIn</a><a class="text-ink transition-colors hover:text-accent" href="https://ishortn.ink/my-github">GitHub</a><a class="text-ink transition-colors hover:text-accent" href="https://ishortn.ink/my-medium">Medium</a><a class="text-ink transition-colors hover:text-accent" href="https://ishortn.ink/my-twitter">Twitter</a><a class="text-ink transition-colors hover:text-accent" href="https://isht.ink/my-mastodom">Mastodon</a><a class="text-ink transition-colors hover:text-accent" href="mailto:arushanand@gmail.com">Email</a></p></footer></div><script type="module">var e=()=>{let e=document.querySelector(`#site-favicon`);if(!e)return;let t=!0;window.setInterval(()=>{t=!t;let n=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 48"><rect x="8" y="7" width="16" height="34" fill="${getComputedStyle(document.documentElement).getPropertyValue(`--color-accent`).trim()}" opacity="${+!!t}"/></svg>`;e.href=`data:image/svg+xml,${encodeURIComponent(n)}`},550)},t=`theme`;function n(e){return e===`dark`?`dark`:`light`}function r(e){return e===`light`?`dark`:`light`}e();var i=document.querySelector(`[data-test="theme-toggle"]`),a=e=>{document.documentElement.dataset.theme=e,document.documentElement.style.colorScheme=e,i?.setAttribute(`aria-pressed`,String(e===`dark`)),i&&(i.textContent=e===`dark`?i.dataset.darkLabel??``:i.dataset.lightLabel??``)},o=e=>{document.querySelector(`script[src="https://giscus.app/client.js"]`)?.setAttribute(`data-theme`,e),document.querySelectorAll(`iframe.giscus-frame`).forEach(t=>{new URL(t.src).origin===`https://giscus.app`&&t.contentWindow?.postMessage({giscus:{setConfig:{theme:e}}},`https://giscus.app`)})},s=n(localStorage.getItem(t));a(s),o(s),i?.addEventListener(`click`,e=>{s=r(s),localStorage.setItem(t,s);let n=()=>{a(s),o(s)},c=document;if(!c.startViewTransition||window.matchMedia(`(prefers-reduced-motion: reduce)`).matches){n();return}let l=i.getBoundingClientRect(),u=e,d=u.clientX||l.left+l.width/2,f=u.clientY||l.top+l.height/2,p=Math.hypot(Math.max(d,window.innerWidth-d),Math.max(f,window.innerHeight-f));c.startViewTransition(n).ready.then(()=>{document.documentElement.animate({clipPath:[`circle(0px at ${d}px ${f}px)`,`circle(${p}px at ${d}px ${f}px)`]},{duration:3e3,easing:`cubic-bezier(0.36, 1, 0.36, 1)`,pseudoElement:`::view-transition-new(root)`})})});</script></body></html>
