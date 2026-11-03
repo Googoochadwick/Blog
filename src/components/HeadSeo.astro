@@ -88,6 +88,12 @@ const imageUrl = new URL(withBase(resolvedImage.src), siteUrl).toString();
 <link rel="icon" href={withBase("/favicon.ico")} />
 <link rel="apple-touch-icon" href={withBase("/favicon.svg")} />
 <link rel="sitemap" href={withBase("/sitemap-index.xml")} />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${resolvedSiteName} RSS`}
+  href={withBase("/rss.xml")}
+/>
 
 <!-- Language Alternates -->
 {hasAlternates && defaultLangAvailable && (

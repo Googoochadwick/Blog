@@ -24,7 +24,15 @@ const base = resolveBase(process.env.PUBLIC_BASE_URL);
 function resolveSite(url) {
   return typeof url === "string" && /^[a-z][a-z0-9+.-]*:\/\//i.test(url) ? url : undefined;
 }
-const site = resolveSite(process.env.PUBLIC_SITE_URL) ?? resolveSite(process.env.PUBLIC_BASE_URL);
+const vercelUrl =
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
+const vercelSite = vercelUrl
+  ? `https://${vercelUrl.replace(/^https?:\/\//, "")}`
+  : undefined;
+const site =
+  resolveSite(process.env.PUBLIC_SITE_URL) ??
+  resolveSite(process.env.PUBLIC_BASE_URL) ??
+  vercelSite;
 
 // https://astro.build/config
 export default defineConfig({
