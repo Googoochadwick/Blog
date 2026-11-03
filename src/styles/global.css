@@ -19,10 +19,10 @@
    * Two-tone, high-contrast palette on warm paper, with a single vermilion
    * accent reserved for the cursor, focus rings and link underlines.
    */
-  --color-paper: #f7f6f2;
-  --color-ink: #0b0b0b;
-  --color-muted: #6f6b63;
-  --color-accent: #ff3b00;
+  --color-paper: #161615;
+  --color-ink: #f2f0eb;
+  --color-muted: #b2ada3;
+  --color-accent: #ff6b3d;
   /* Hairline dividers: present, but quiet. */
   --color-line: color-mix(in srgb, var(--color-ink) 14%, transparent);
 
@@ -35,28 +35,8 @@
   --animate-blink: blink 1.1s steps(1, end) infinite;
 }
 
-/* The values are overridden together so every existing color utility follows
- * the selected palette without each component needing a theme-specific rule. */
-html[data-theme="dark"] {
+html {
   color-scheme: dark;
-  --color-paper: #161615;
-  --color-ink: #f2f0eb;
-  --color-muted: #b2ada3;
-  --color-accent: #ff6b3d;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-::view-transition-old(root) {
-  z-index: 1;
-}
-
-::view-transition-new(root) {
-  z-index: 9999;
 }
 
 @keyframes blink {
@@ -328,8 +308,7 @@ html[data-theme="dark"] {
   /*
    * Diagrams rendered at build time by Pele (src/components/Mermaid.astro).
    * The SVG carries its own --pele-* variables, so mapping them to the site
-   * palette here is enough: switching data-theme recolours the diagram
-   * without a re-render.
+   * palette here is enough for the site-wide dark palette.
    */
   .prose .mermaid-figure {
     margin: 2em 0;

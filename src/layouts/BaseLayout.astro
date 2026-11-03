@@ -25,19 +25,9 @@ const homeUrl = translatePath('/about');
 ---
 
 <!doctype html>
-<html lang={languageTags[lang]}>
+<html lang={languageTags[lang]} data-theme="dark">
 	<head>
 		<HeadSeo {...Astro.props} />
-		<script is:inline>
-			try {
-				const theme = localStorage.getItem("theme") === "dark" ? "dark" : "light";
-				document.documentElement.dataset.theme = theme;
-				document.documentElement.style.colorScheme = theme;
-			} catch {
-				document.documentElement.dataset.theme = "light";
-				document.documentElement.style.colorScheme = "light";
-			}
-		</script>
 		<slot name="head" />
 	</head>
 	<body>
@@ -53,19 +43,6 @@ const homeUrl = translatePath('/about');
 				<AppLogo name={brand.name} href={homeUrl} />
 				<AppNavbar navigation={nav} path={path} />
 			</header>
-			<div class="flex shrink-0 items-center gap-4 md:mt-auto md:block">
-				<button
-					data-test="theme-toggle"
-					type="button"
-					class="label cursor-pointer appearance-none border-0 bg-transparent p-0 text-muted hover:text-ink md:mt-5"
-					aria-label={t('theme.toggle')}
-					aria-pressed="false"
-					data-light-label={t('theme.light')}
-					data-dark-label={t('theme.dark')}
-				>
-					{t('theme.light')}
-				</button>
-			</div>
 		</div>
 		<div class="mt-(--navbar-height) flex flex-1 flex-col md:mt-0 md:ml-(--navbar-width)">
 			<slot />
@@ -78,91 +55,8 @@ const homeUrl = translatePath('/about');
 		</div>
 		<script>
 			import { startFaviconBlink } from '@/utils/favicon';
-			import { getTheme, themeStorageKey, toggleTheme } from '@/utils/theme';
 
 			startFaviconBlink();
-
-			const toggle = document.querySelector<HTMLButtonElement>('[data-test="theme-toggle"]');
-
-			const applyTheme = (theme: 'light' | 'dark') => {
-				document.documentElement.dataset.theme = theme;
-				document.documentElement.style.colorScheme = theme;
-				toggle?.setAttribute('aria-pressed', String(theme === 'dark'));
-				if (toggle) {
-					toggle.textContent =
-						theme === 'dark' ? (toggle.dataset.darkLabel ?? '') : (toggle.dataset.lightLabel ?? '');
-				}
-			};
-
-			const syncGiscus = (theme: 'light' | 'dark') => {
-				document
-					.querySelector<HTMLScriptElement>('script[src="https://giscus.app/client.js"]')
-					?.setAttribute('data-theme', theme);
-				document.querySelectorAll<HTMLIFrameElement>('iframe.giscus-frame').forEach((frame) => {
-					if (new URL(frame.src).origin === 'https://giscus.app') {
-						frame.contentWindow?.postMessage(
-							{ giscus: { setConfig: { theme } } },
-							'https://giscus.app',
-						);
-					}
-				});
-			};
-
-			type ViewTransition = {
-				ready: Promise<void>;
-			};
-			type ViewTransitionDocument = Document & {
-				startViewTransition?: (updateCallback: () => void) => ViewTransition;
-			};
-
-			let theme = getTheme(localStorage.getItem(themeStorageKey));
-			applyTheme(theme);
-			syncGiscus(theme);
-
-			toggle?.addEventListener('click', (event) => {
-				theme = toggleTheme(theme);
-				localStorage.setItem(themeStorageKey, theme);
-
-				const updateTheme = () => {
-					applyTheme(theme);
-					syncGiscus(theme);
-				};
-				const viewTransitionDocument = document as ViewTransitionDocument;
-
-				if (
-					!viewTransitionDocument.startViewTransition ||
-					window.matchMedia('(prefers-reduced-motion: reduce)').matches
-				) {
-					updateTheme();
-					return;
-				}
-
-				const bounds = toggle.getBoundingClientRect();
-				const pointerEvent = event as MouseEvent;
-				const x = pointerEvent.clientX || bounds.left + bounds.width / 2;
-				const y = pointerEvent.clientY || bounds.top + bounds.height / 2;
-				const endRadius = Math.hypot(
-					Math.max(x, window.innerWidth - x),
-					Math.max(y, window.innerHeight - y),
-				);
-
-				const transition = viewTransitionDocument.startViewTransition(updateTheme);
-				void transition.ready.then(() => {
-					document.documentElement.animate(
-						{
-							clipPath: [
-								`circle(0px at ${x}px ${y}px)`,
-								`circle(${endRadius}px at ${x}px ${y}px)`,
-							],
-						},
-						{
-							duration: 3000,
-							easing: 'cubic-bezier(0.36, 1, 0.36, 1)',
-							pseudoElement: '::view-transition-new(root)',
-						},
-					);
-				});
-			});
 		</script>
 	</body>
 </html>

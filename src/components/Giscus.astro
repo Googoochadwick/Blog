@@ -1,14 +1,5 @@
 <section class="mx-auto w-full max-w-3xl px-4 pb-8">
 	<div class="giscus"></div>
-	<script is:inline>
-		try {
-			const themeScript = document.currentScript?.nextElementSibling;
-			const theme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
-			themeScript?.setAttribute('data-theme', theme);
-		} catch {
-			// Keep the component's light-theme default when storage is unavailable.
-		}
-	</script>
 	<script
 		is:inline
 		src="https://giscus.app/client.js"
@@ -21,7 +12,7 @@
 		data-reactions-enabled="1"
 		data-emit-metadata="0"
 		data-input-position="bottom"
-		data-theme="light"
+		data-theme="dark"
 		data-lang="en"
 		crossorigin="anonymous"
 		async

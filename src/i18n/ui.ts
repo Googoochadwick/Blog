@@ -47,9 +47,6 @@ const en = {
   "notfound.body":
     "The document you asked for is not in the archive. It may have moved, been unpublished — or the address may hold a typo.",
   "notfound.pathLabel": "requested",
-  "theme.toggle": "Toggle color theme",
-  "theme.light": "[light]",
-  "theme.dark": "[dark]",
 } as const;
 
 // `satisfies` keeps every language in sync with the English keys: adding a key
