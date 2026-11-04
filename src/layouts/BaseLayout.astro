@@ -8,6 +8,8 @@ import HeadSeo, { type Props as HeadSeoProps } from '@/components/HeadSeo.astro'
 import { languageTags } from '@/i18n/ui';
 import { getLangFromUrl, getPathFromUrl, useTranslatedPath, useTranslations } from '@/i18n/utils';
 import { buildNav } from '@/utils/nav';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props extends HeadSeoProps {}
 
@@ -53,6 +55,8 @@ const homeUrl = translatePath('/about');
 				linksLabel={t('footer.links')}
 			/>
 		</div>
+		<Analytics />
+		<SpeedInsights />
 		<script>
 			import { startFaviconBlink } from '@/utils/favicon';
 
